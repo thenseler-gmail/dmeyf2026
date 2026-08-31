@@ -12,3 +12,5 @@ seaborn
 matplotlib
 scikit-learn
 scipy
+optuna
+plotly
