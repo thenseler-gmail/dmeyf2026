@@ -13,3 +13,9 @@ scikit-learn
 optuna
 plotly
 requests==2.34.2
+seaborn
+matplotlib
+scikit-learn
+scipy
+optuna
+plotly
