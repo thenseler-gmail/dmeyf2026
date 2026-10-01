@@ -1,13 +1,14 @@
-"""Perfiles de clientes BAJA+2 con Random Forest: genera clusters_tendencias.pdf.
+"""Perfiles BAJA+2 con Random Forest y descripciones del diccionario ODS.
 
 Requisitos: Python 3.12+ y
     pip install duckdb pandas numpy scikit-learn matplotlib
 
 Uso:
-    python clusters_rf_alumnos.py --csv competencia_01_ct_julia.csv
+    python z501_cluster_rf_th.py --k 5 --out clusters_tendencias_k5_th.pdf
 
 Opciones (todas con default):
-    --out clusters_tendencias.pdf   archivo de salida
+    --out clusters_tendencias_k5_th.pdf   archivo de salida
+    --diccionario PATH             diccionario ODS (hoja Diccionario)
     --n-trees 300                   árboles del Random Forest
     --min-samples-leaf 50           tamaño mínimo de hoja
     --k 5                           cantidad de clusters (máx. 6)
@@ -20,6 +21,9 @@ from __future__ import annotations
 
 import argparse
 import time
+import textwrap
+import zipfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import duckdb
@@ -51,6 +55,32 @@ BANDAS = {
 }
 
 _T0 = time.time()
+
+
+def cargar_diccionario(path: Path) -> dict[str, str]:
+    """Lee campo, unidad y significado de la hoja Diccionario del ODS."""
+    ns = {"t": "urn:oasis:names:tc:opendocument:xmlns:table:1.0"}
+    with zipfile.ZipFile(path) as archive:
+        root = ET.fromstring(archive.read("content.xml"))
+    tabla = next(t for t in root.findall(".//t:table", ns)
+                 if t.get(f"{{{ns['t']}}}name") == "Diccionario")
+    resultado = {}
+    for row in tabla.findall("t:table-row", ns):
+        cells = []
+        for cell in row.findall("t:table-cell", ns):
+            valor = " ".join(" ".join(cell.itertext()).split())
+            repeat = int(cell.get(f"{{{ns['t']}}}number-columns-repeated", "1"))
+            cells.extend([valor] * min(repeat, 4 - len(cells)))
+            if len(cells) >= 4:
+                break
+        if len(cells) >= 4 and cells[1] and cells[1] != "campo" and cells[3]:
+            resultado[cells[1]] = f"{cells[3]} Unidad: {cells[2]}."
+    # El CSV contiene una t adicional respecto del nombre en el diccionario.
+    origen = "mtarjeta_visa_debitos_automaticos"
+    destino = "mttarjeta_visa_debitos_automaticos"
+    if destino not in resultado and origen in resultado:
+        resultado[destino] = resultado[origen] + f" Nombre en el diccionario: {origen}."
+    return resultado
 
 
 def log(msg: str) -> None:
@@ -235,15 +265,56 @@ def _pagina_resumen(pdf: PdfPages, ctx: dict) -> None:
         "Cómo leer cada página:",
         "  • Título = atributo. Primero los definitorios (top-n por lift de cada cluster, en orden de cluster),",
         "    después todos los demás en orden alfabético.",
-        f"  • Eje X = mes calendario ({ctx['meses'][0]}–{ctx['meses'][-1]}); {ctx['mes_excluido']} se excluye porque ya no hay BAJA+2 con historia ahí.",
+        f"  • Eje X = mes calendario ({ctx['meses'][0]}–{ctx['meses'][-1]}), incluidos meses con reapariciones.",
         f"  • Línea = {ctx['centro']} del atributo entre los clientes del cluster presentes ese mes;",
         f"    banda = {ctx['banda_desc']}, recortada al rango observado del atributo.",
-        "  • Los clusters se achican mes a mes (tabla de n al pie): los clientes se van dando de baja.",
+        "  • Estados de tarjetas e internet: distribución de categorías, incluidos faltantes; no se promedian códigos.",
+        "  • La composición cambia: salen clientes y algunos reaparecen; consultar la tabla de n al pie.",
+        "  • Agosto contiene solo 17 clientes que reaparecen: no representa al cluster completo.",
         "  • Si un atributo define a un cluster, su línea debería despegarse claramente de las otras.",
     ]
     fig.text(0.06, 0.92, "Clusters de clientes BAJA+2 — tendencia mensual por atributo",
              fontsize=18, color=INK, weight="bold", va="top")
     fig.text(0.06, 0.84, "\n".join(texto), fontsize=11, color=INK_2, va="top", linespacing=1.6)
+    pdf.savefig(fig)
+    plt.close(fig)
+
+
+def pagina_categorica(pdf: PdfPages, attr: str, meses: list[int], ctx: dict) -> None:
+    """Distribuciones mensuales sin atribuir significado numérico a los códigos."""
+    data = ctx["datos_categoricos"]
+    if attr.endswith("status"):
+        valores = [0, 6, 7, 9]
+        nombres = ["Abierta", "En cierre", "Cierre avanzado", "Cerrada"]
+    else:
+        valores = sorted(data[attr].dropna().unique())
+        nombres = [f"Código {v:g}" for v in valores]
+    colors = ["#2a78d6", "#eda100", "#eb6834", "#8056b3", "#1baf7a"][:len(valores)] + ["#d5d9dc"]
+    nombres += ["Faltante"]
+    fig = plt.figure(figsize=(11.69, 8.27))
+    fig.text(.07, .95, attr, fontsize=20, weight="bold", color=INK)
+    fig.text(.07, .925, textwrap.fill(ctx["diccionario"][attr], 115), fontsize=10, va="top", color=INK_2)
+    grid = fig.add_gridspec(2, 3, left=.07, right=.97, bottom=.13, top=.77, hspace=.65, wspace=.28)
+    for i, c in enumerate(sorted(data[CLUSTER_COL].unique())):
+        ax = fig.add_subplot(grid[i//3, i%3])
+        g = data[data[CLUSTER_COL].eq(c)]
+        ns = g.groupby(MES_COL).size().reindex(meses, fill_value=0)
+        bottom = np.zeros(len(meses))
+        for j, value in enumerate(valores + [None]):
+            mask = g[attr].isna() if value is None else g[attr].eq(value)
+            counts = g[mask].groupby(MES_COL).size().reindex(meses, fill_value=0)
+            pct = (100*counts/ns.replace(0, np.nan)).fillna(0).to_numpy()
+            ax.bar(np.arange(len(meses)), pct, bottom=bottom, color=colors[j], label=nombres[j])
+            bottom += pct
+        ax.set_title(f"cluster_{c}", fontsize=11)
+        ax.set_xticks(range(len(meses)), [f"{m%100:02d}\nn={ns.loc[m]}" for m in meses], fontsize=7)
+        ax.set_ylim(0, 100)
+        ax.set_ylabel("% de presentes", fontsize=8)
+        _estilo(ax)
+        ax.tick_params(axis="x", labelsize=7)
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5,.05), ncol=len(nombres), frameon=False, fontsize=9)
+    fig.text(.07, .02, "Meses de 2021; n incluye faltantes. Sin barra cuando n=0. Fuente: " + ctx["diccionario_path"].name, fontsize=7, color=INK_2)
     pdf.savefig(fig)
     plt.close(fig)
 
@@ -254,9 +325,15 @@ def pdf_tendencias(tend: pd.DataFrame, atributos: list[str], atributos_def: pd.D
     with PdfPages(path) as pdf:
         _pagina_resumen(pdf, ctx)
         for attr in atributos:
+            if attr in ("Visa_status", "Master_status", "internet"):
+                pagina_categorica(pdf, attr, meses, ctx)
+                continue
             define = atributos_def[atributos_def["atributo"] == attr].sort_values("lift", ascending=False)
             fig = plt.figure(figsize=(11.69, 8.27))
-            ax = fig.add_axes([0.07, 0.30, 0.90, 0.54])
+            descripcion = textwrap.fill(ctx["diccionario"][attr], width=115)
+            n_lineas = len(descripcion.splitlines())
+            chart_top = 0.80 - n_lineas * 0.022
+            ax = fig.add_axes([0.07, 0.30, 0.90, chart_top - 0.30])
             x = np.arange(len(meses))
             for i, c in enumerate(clusters):
                 s = tend.xs(c, level=CLUSTER_COL)
@@ -267,7 +344,7 @@ def pdf_tendencias(tend: pd.DataFrame, atributos: list[str], atributos_def: pd.D
             ax.set_xticks(x, meses)
             ax.set_xlim(-0.3, len(meses) - 0.7)
             _estilo(ax)
-            ax.legend(frameon=False, fontsize=9, loc="upper left")
+            ax.legend(frameon=False, fontsize=9, loc="lower left", bbox_to_anchor=(0, 1.015), ncol=5)
             ax.set_ylabel(attr, color=INK_2)
 
             fig.text(0.07, 0.945, attr, fontsize=20, color=INK, weight="bold")
@@ -279,8 +356,12 @@ def pdf_tendencias(tend: pd.DataFrame, atributos: list[str], atributos_def: pd.D
                 rol = f"No es definitorio de ningún cluster (mayor lift: cluster_{c_max}, {lift_all.loc[c_max, attr]:.2f})."
             else:
                 rol = "Nunca definió una hoja del bosque."
-            fig.text(0.07, 0.925, f"{rol}\nLínea = {ctx['centro']} mensual entre los clientes del cluster presentes ese mes; "
-                     f"banda = {ctx['banda_desc']}, recortada al rango observado.", fontsize=10, color=INK_2, va="top", linespacing=1.4)
+            fig.text(0.07, 0.920, descripcion, fontsize=10, color=INK_2, va="top", linespacing=1.3)
+            nota = textwrap.fill(rol, width=115) + "\n" + textwrap.fill(
+                f"Línea = {ctx['centro']} mensual; banda = {ctx['banda_desc']}, recortada al rango observado.", width=115)
+            fig.text(0.07, 0.910 - n_lineas * 0.022, nota,
+                     fontsize=9, color=INK_2, va="top", linespacing=1.3)
+            fig.text(0.07, 0.015, f"Fuente de las descripciones: {ctx['diccionario_path'].name}", fontsize=7, color=INK_2)
 
             # tabla de n por cluster y mes: hace visible el achicamiento de los grupos
             n_tab = tend["n"][attr].unstack(MES_COL).reindex(index=clusters, columns=meses).fillna(0).astype(int)
@@ -305,8 +386,9 @@ def pdf_tendencias(tend: pd.DataFrame, atributos: list[str], atributos_def: pd.D
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--csv", type=Path, default=Path("competencia_01_ct_julia.csv"))
-    p.add_argument("--out", type=Path, default=Path("clusters_tendencias.pdf"))
+    p.add_argument("--csv", type=Path, default=Path(__file__).resolve().parents[1] / "data/competencia_01.csv")
+    p.add_argument("--out", type=Path, default=Path("clusters_tendencias_k5_th.pdf"))
+    p.add_argument("--diccionario", type=Path, default=Path(__file__).resolve().parents[1] / "dmeyf2026-9c6f_DiccionarioDatos_2026.ods")
     p.add_argument("--n-trees", type=int, default=300)
     p.add_argument("--min-samples-leaf", type=int, default=50)
     p.add_argument("--k", type=int, default=5)
@@ -326,8 +408,13 @@ def main() -> None:
     log(f"leyendo {args.csv.name}")
     df = cargar_muestra(args.csv, args.seed)
     meses_total = sorted(df[MES_COL].unique().tolist())
-    meses = meses_total[:-1]  # el último mes no tiene BAJA+2 con historia
+    meses = sorted(df.loc[df[GRUPO_COL] == 1, MES_COL].unique().tolist())
     feats = columnas_features(df)
+    diccionario = cargar_diccionario(args.diccionario)
+    faltantes = sorted(set(feats) - diccionario.keys())
+    if faltantes:
+        raise SystemExit(f"Variables sin descripción en el diccionario: {faltantes}")
+    log(f"diccionario: descripciones para las {len(feats)} variables")
     por_grupo = df.groupby(GRUPO_COL)[ID_COL].agg(ids="nunique", filas="size")
     log(f"muestra: {len(df):,} filas × {len(feats)} features · "
         + " · ".join(f"grupo {g}: {r.ids:,} ids / {r.filas:,} filas" for g, r in por_grupo.iterrows()))
@@ -359,6 +446,8 @@ def main() -> None:
     tend = tendencias_por_cluster(df_churn, atributos_pdf, meses, args.banda)
 
     ctx = dict(
+        datos_categoricos=df_churn,
+        diccionario=diccionario, diccionario_path=args.diccionario,
         n_trees=args.n_trees, min_samples_leaf=args.min_samples_leaf, k=args.k, oob=rf.oob_score_,
         n_churn=int(por_grupo.loc[1, "ids"]), n_fieles=int(por_grupo.loc[0, "ids"]),
         meses=meses, mes_excluido=meses_total[-1], tam=tam.to_dict(),

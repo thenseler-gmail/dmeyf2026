@@ -460,3 +460,115 @@ No se abrió un pull request y no se modificó el repositorio oficial de la cát
 | 202106 | 874 | 1098 | 162142 | 164114 |
 
 Estos conteos provienen de nuestra ejecución y también aparecen en el SQL generado previamente mediante ChatGPT Web. No constituyen una validación independiente ni fueron confirmados como valores oficiales de la cátedra. La corrección debe sostenerse mediante la definición del target y verificaciones internas: conservación de filas, unicidad cliente-mes, clases permitidas, coherencia del horizonte temporal y tratamiento explícito de valores nulos y reapariciones.
+
+
+## 21. Contexto compartido del TP: churn y Clase 04 — 2026-09-09
+
+Esta sección amplía la bitácora existente como punto de continuidad entre Codex de escritorio y Codex de VS Code. No se creó un CONTEXTO_TP.md separado para evitar duplicar la memoria del proyecto. Las secciones anteriores se conservan como registro histórico: sus estados de Git, dependencias y pendientes no deben asumirse actuales sin verificar.
+
+### Objetivo y forma de trabajo acordada
+
+- Objetivo final declarado por Tomás: predecir churn bancario.
+- Etapa actual: tarea de Clase 04, Feature Engineering (FE) intrames e histórico, evaluación con Random Forest y preparación para clustering.
+- Tomás quiere trabajar paso a paso, entender las variables y discutir la propuesta antes de implementar un bloque grande o ejecutar experimentos largos.
+- Codex de VS Code lleva el notebook, datos y experimentos; Codex de escritorio puede consultar Zulip y otras fuentes cuando el primero no pueda acceder.
+- Mantener este archivo actualizado con decisiones, resultados verificados y pendientes. Distinguir propuestas de acuerdos, y relatos previos de resultados comprobados.
+- Conservar originales y guardar entregables separados. No publicar mensajes, subir archivos ni hacer push por el solo hecho de actualizar este contexto.
+
+### Consigna verificada en Zulip
+
+Fuente: hilo Lunes: Material + Tareas → Clase 04, leído por Codex de escritorio el 2026-09-09.
+
+Alejandro Bolaños, 4 de septiembre de 2026, pidió crear variables intrames e históricas, tenerlas listas para clustering, ejecutar un Random Forest sobre el dataset ampliado y analizar las variables históricas.
+
+https://uba26.zulip.rebelare.com/#narrow/channel/1062-Lunes.3A-Material-.2B-Tareas/topic/Clase.2004/near/186530
+
+En ese hilo no se encontró un mínimo de variables, formato de entrega ni fecha explícita. El docente indicó que la clase estaba en GitHub; no se verificó aquí el contenido completo del material docente. No confundir esa ausencia en el hilo con ausencia de requisitos en otras fuentes.
+
+Joaquín Sebastian Tschopp, 9 de septiembre de 2026, remarcó la necesidad de revisar minuciosamente cómo se comparan los experimentos y conservar las funciones de FE aunque inicialmente no mejoren. Respondía a una compañera que había probado sumas, ratios, lags, deltas, medias móviles y slopes. Esos ejemplos de la compañera no constituyen una lista obligatoria.
+
+https://uba26.zulip.rebelare.com/#narrow/channel/1062-Lunes.3A-Material-.2B-Tareas/topic/Clase.2004/near/187096
+
+### Archivos encontrados en el proyecto
+
+Existencia verificada el 2026-09-09; no se auditó su implementación en esta actualización:
+
+- `monday/z402_Feature_Engineering_en_SQL.ipynb`
+- `monday/z402_Feature_Engineering_en_SQL_TH.ipynb`
+- `monday/EDA_clase04_TH.ipynb`
+- `monday/z301_Sobre_la_incertidumbre_TH.ipynb`
+- `monday/EDA_target.ipynb`
+- `monday/tomas_target_sql.ipynb`
+- `monday/z101_target_sql.ipynb`
+
+Inspeccionar estos archivos antes de crear notebooks, variables o experimentos nuevos. No inferir cuál es el notebook activo solo por su nombre.
+
+La bitácora previa documenta datos de marzo a agosto de 2021, identificadores `numero_de_cliente` y `foto_mes`, y target `clase_ternaria` con BAJA+1, BAJA+2 y CONTINUA. Documenta BAJA+2 como clase accionable. Esto proviene del registro anterior, no de una nueva lectura del dataset. Verificar definición, horizonte, función de ganancia y archivos actualmente utilizados.
+
+Punto a resolver: si los datos disponibles comienzan en marzo, no existe historial anterior para generar lags de marzo con ese archivo. Confirmar si hay otra fuente histórica o si corresponde rediseñar los meses de entrenamiento y evaluación; nunca completar el pasado con meses futuros.
+
+### Trabajo anterior reportado por Tomás
+
+Fuente: texto aportado por el usuario en la conversación de escritorio del 2026-09-09; no auditado contra el notebook en esta actualización.
+
+- Corrió 100 trials y comparó las cinco mejores configuraciones en las mismas 30 particiones de marzo (70% entrenamiento, 30% validación).
+- Comparó diferencias pareadas con Wilcoxon y reportó no encontrar evidencia suficiente de superioridad.
+- Entrenó luego con todo marzo y evaluó mayo. Simuló 100 divisiones público/privado (30%/70%) con modelos fijos y los mismos grupos para todos.
+- Reportó diferencias pequeñas e inversiones frecuentes entre público y privado.
+- Revisar cuánto se usó mayo para seleccionar configuraciones antes de presentarlo como test independiente.
+
+### Bibliografía local y síntesis
+
+Los PDF se movieron desde Downloads a la raíz de este proyecto, conservando nombres y contenido.
+
+#### Lemos, Silva y Tabak (2022)
+
+[Propension to customer churn in a financial institution: a machine learning approach](521_2022_Article_7067.pdf)
+
+DOI: https://doi.org/10.1007/s00521-022-07067-x
+
+- Banco brasileño, muestra de 500.000 clientes balanceada artificialmente: 250.000 con churn y 250.000 sin churn.
+- Churn: cierre de cuenta o inactividad durante seis meses.
+- Predictores: agosto de 2018 a enero de 2019; horizonte objetivo: febrero a julio de 2019.
+- FE: productos, transacciones, inversiones, crédito y rentabilidad, con valores anteriores y variaciones absolutas y porcentuales a seis meses; también sueldo y débitos automáticos.
+- Comparación de árbol, KNN, logística, elastic net, SVM y RF. Holdout de 10%; selección mediante validación cruzada de diez folds repetida diez veces sobre entrenamiento.
+- RF: AUC 0,9015, accuracy 82,8%, precision 84,4% y recall 80,2%. Ensamble: AUC 0,9018, sin superioridad significativa sobre RF (tablas 7–8, páginas 12–13 del PDF).
+- Límites: no aísla el aporte del FE histórico frente a un modelo sin FE; muestra balanceada altera la interpretación de precision y accuracy en población; ahorros son proyecciones, no resultados observados de campañas. Asociaciones entre productos y permanencia no prueban causalidad.
+- Secciones útiles: 3.2 y tabla 1 (variables), 3.4 (evaluación), 4–5 (resultados y conclusiones).
+
+#### Kaya y otros (2018)
+
+[Behavioral attributes and financial churn prediction](s13688-018-0165-5.pdf)
+
+DOI: https://doi.org/10.1140/epjds/s13688-018-0165-5
+
+- Cuatro datasets derivados de dos muestras de una misma institución, con aproximadamente 42.000–55.000 clientes después de los filtros; no son cuatro bancos independientes.
+- Ventanas de observación de nueve o doce meses y de etiquetado de tres o cinco meses. La etiqueta principal es inactividad durante toda la ventana posterior.
+- FE: diversidad espacial y temporal, concentración en lugares/horarios habituales (llamada loyalty, no fidelidad directa al banco), regularidad entre corto y largo plazo, y entropía de comercios/categorías/destinatarios.
+- RF de 500 árboles, validación cruzada estratificada de ocho folds y SVM-SMOTE. Importancias mediante permutación sobre la parte de evaluación de cada fold.
+- A1: AUC 0,779 con comportamiento frente a 0,513 con demografía. Comportamiento supera significativamente a demografía en los cuatro datasets. Agregar demografía a comportamiento no aporta una mejora significativa (figura 2, página 10).
+- Límites: comparación central contra demografía, no contra un baseline bancario completo; requiere detalle transaccional no necesariamente disponible en nuestro dataset; no demuestra causalidad ni éxito de una campaña de retención.
+- Secciones útiles: 2.2 (variables), 2.3–2.4 (target y evaluación), 3–4 (resultados y límites).
+
+Los resúmenes provienen de la lectura de los PDF por Codex de escritorio el 2026-09-09. Consultar originales antes de replicar fórmulas o citar detalles. Las métricas de ambos papers no son directamente comparables entre sí ni con nuestro TP.
+
+### Referencia explorada en Hugging Face
+
+https://huggingface.co/ash001/bank-churn-ann
+
+Notebook: https://colab.research.google.com/drive/1ubzL_5BlJwnAVtqoko7IlZjYa0V8913r
+
+Lectura del notebook por Codex de escritorio: ANN de 64 y 32 neuronas, entradas tabulares sin historial mensual documentado, split 8.000/2.000, escalado, early stopping y accuracy reportada 86,4%. Usa los mismos 2.000 casos para early stopping y evaluación final: es validación, no test independiente. Es una referencia de implementación; no una demostración de superioridad ni fuente central de FE para esta tarea.
+
+### Propuesta de próximos pasos (pendiente de discutir e implementar)
+
+1. Revisar el notebook activo y el trabajo ya realizado; no duplicarlo.
+2. Identificar datos e historia disponibles y verificar target, horizonte y ganancia.
+3. Proponer una tabla de hipótesis, columnas reales, fórmulas, ventanas, tratamiento de faltantes y fuente de inspiración. Distinguir variables equivalentes ya implementadas.
+4. Empezar con pocos cambios interpretables: lags y diferencias; actividad actual frente a promedios previos; meses consecutivos de caída; interrupción de usos habituales; diversidad de productos efectivamente usados, si existen datos.
+5. Estas son hipótesis propias inspiradas en los papers, no mejoras demostradas para nuestro dataset. Discutir con Tomás antes de corridas largas.
+6. Comparar originales vs. originales + intrames vs. originales + intrames + histórico usando las mismas particiones, semillas, criterio de ganancia e inicialmente hiperparámetros. Ajustar el protocolo si la disponibilidad temporal impide esa comparación y documentar la decisión.
+7. Evitar fuga temporal y del objetivo. Distinguir mes calendario previo de registro previo, historial incompleto de actividad cero; tratar ceros, nulos e infinitos explícitamente. Ajustar transformaciones aprendidas solo sobre entrenamiento.
+8. No copiar balanceo/SMOTE automáticamente. Evaluar sobre distribución real y considerar el efecto del muestreo sobre probabilidades y umbrales.
+9. Conservar funciones y resultados negativos. Analizar ganancia y variabilidad, sin equiparar importancia con mejora real.
+10. Registrar experimentos verificados aquí con referencias a archivos y preparar un resumen para Zulip cuando haya resultados. La publicación no está autorizada por este contexto.
