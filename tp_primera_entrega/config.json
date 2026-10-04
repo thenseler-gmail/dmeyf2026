@@ -1,0 +1,40 @@
+{
+  "fecha_entrega": "2026-10-11",
+  "dataset": "data/competencia_01.csv",
+  "id_col": "numero_de_cliente",
+  "mes_col": "foto_mes",
+  "target_col": "clase_ternaria",
+  "clase_positiva": "BAJA+2",
+  "seed": 214363,
+  "split": {
+    "confirmado": true,
+    "train_meses": [202103],
+    "validacion_meses": [202105],
+    "reentrenamiento_meses": [202103, 202104],
+    "test_meses": [202106],
+    "tipo_evaluacion": "Retrospectiva con separación temporal; selección en mayo disponible en julio",
+    "prediccion_mes": 202108
+  },
+  "entrega": {
+    "mes_asumido": false,
+    "ultimo_mes_observado": 202108,
+    "mes_base_clientes": 202108,
+    "horizonte_target_confirmado": true,
+    "mes_presencia_baja2": 202109,
+    "mes_ausencia_baja2": 202110
+  },
+  "ganancia": {
+    "acierto": 1072500,
+    "error": -27500,
+    "no_seleccionado": 0,
+    "fuente": "Matriz del PDF de la cátedra, captura aportada por Tomás"
+  },
+  "optimizacion": {
+    "herramienta": "optuna",
+    "metrica": "ganancia_validacion",
+    "direccion": "maximize",
+    "n_trials": null,
+    "timeout_segundos": null
+  },
+  "salidas": "tp_primera_entrega/salidas"
+}

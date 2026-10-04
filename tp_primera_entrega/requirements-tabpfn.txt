@@ -1,0 +1,6 @@
+# Dependencias opcionales para Windows, Python 3.14 y GPU NVIDIA.
+# Instalar después de requirements.txt, desde la raíz del repositorio:
+# .venv/Scripts/python.exe -m pip install -r tp_primera_entrega/requirements-tabpfn.txt
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+tabpfn==9.1.0
