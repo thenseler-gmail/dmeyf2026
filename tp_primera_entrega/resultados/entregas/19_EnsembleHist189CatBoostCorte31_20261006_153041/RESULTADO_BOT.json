@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-10-06",
+  "entrega": 19,
+  "public_gain_mean": 93.6595,
+  "public_gain_std_dev": 1.8989,
+  "media_publica_pesos": 93659500,
+  "desvio_publico_pesos": 1898900,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Informado por Tomas como esta, interpretado como entrega19 por contexto inmediato; numero no explicito.",
+  "delta_vs_entrega16_pesos": -3261500,
+  "faltante_objetivo_100millones": 6340500,
+  "escala": "Ganancia publica ya correspondiente al25%; no dividir nuevamente."
+}

@@ -1,0 +1,19 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 48,
+  "public_gain_mean": 98.8625,
+  "public_gain_std_dev": 0.0,
+  "media_publica_pesos": 98862500,
+  "desvio_publico_pesos": 0,
+  "archivos": 1,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas inmediatamente despues de48: mean98.8625/std0.0000; atribuido a48 por contexto.",
+  "delta_vs_entrega43_pesos": -1952500,
+  "delta_vs_entrega47_pesos": -247500,
+  "delta_vs_entrega36_pesos": 687500,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "faltante_objetivo_100millones": 1137500,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Cambio exclusivo v3.5-fast a v3.5, sin nueva validacion local. Pierde frente43 en este publico; no establece superioridad general de una version. Una lista, desvio0 no mide estabilidad."
+}

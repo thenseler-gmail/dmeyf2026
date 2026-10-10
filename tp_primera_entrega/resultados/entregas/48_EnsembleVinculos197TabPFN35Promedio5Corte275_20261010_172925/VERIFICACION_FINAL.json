@@ -1,0 +1,20 @@
+{
+  "estado": "verificado",
+  "clientes": 10834,
+  "csv_reproducido_con_hash_identico": true,
+  "codigo_firmado_archivado": true,
+  "archivos_codigo": 6,
+  "resultado_reproduccion": {
+    "estado": "verificado",
+    "entrega": "C:\\Users\\tomas\\OneDrive\\Documents\\Maestria\\DMEyF\\dmeyf2026\\tp_primera_entrega\\salidas\\01_entregas_bot\\48_EnsembleVinculos197TabPFN35Promedio5Corte275_20261010_172925",
+    "api": false,
+    "creditos": 0,
+    "archivos": [
+      {
+        "seed": "ensemble",
+        "contactos": 10834,
+        "sha256": "19a2942d251273155215685985e2f797cc6a852a00c14ef401ef9905a50e112b"
+      }
+    ]
+  }
+}

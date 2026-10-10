@@ -1,0 +1,65 @@
+{
+  "fecha": "2026-10-10",
+  "estado": "validacion_local_completa_cerrada",
+  "fuente": "Clon nuevo descargado desde GitHub; dos venv nuevos instalados con pip --no-cache-dir",
+  "commit": "6ea5f3dc13b4e5f7e83953bbf478997a17cd8218",
+  "archivos_firmados_verificados": 21,
+  "python": "3.14.6",
+  "plataforma": "Windows x64",
+  "pip_check_principal": "No broken requirements found.",
+  "pip_check_tabpfn": "No broken requirements found.",
+  "entornos_aislados_verificados": true,
+  "credenciales_incluidas_en_repositorio": false,
+  "creditos_consumidos": 0,
+  "reproduccion_rapida": {
+    "estado": "identico_byte_por_byte",
+    "contactos": 10404,
+    "sha256": "4dcf5eff118dafa41953f66999203db6818017975d52010bad33c4881985496e",
+    "modo": "probabilidades_guardadas",
+    "matriz_agosto_sha256": null,
+    "error_maximo_por_modelo": {},
+    "api": false,
+    "creditos": 0
+  },
+  "inferencia_lightgbm": {
+    "estado": "identico_byte_por_byte",
+    "contactos": 10404,
+    "sha256": "4dcf5eff118dafa41953f66999203db6818017975d52010bad33c4881985496e",
+    "modo": "modelos_y_dataset",
+    "matriz_agosto_sha256": "6d784e36bdbfd4d257453aee6f53bf4ae617fc3e07e4e27e2f119a63ed81ff33",
+    "error_maximo_por_modelo": {
+      "541440": 0.0,
+      "408476": 0.0,
+      "741961": 0.0,
+      "248865": 0.0,
+      "717444": 0.0
+    },
+    "api": false,
+    "creditos": 0
+  },
+  "preparacion_tabpfn": {
+    "estado": "payload_original_verificado",
+    "filas_train": 327052,
+    "filas_agosto": 164647,
+    "variables": 202,
+    "target": "BAJA+2",
+    "datos_clientes_enviados": false
+  },
+  "cotizacion_tabpfn": {
+    "estimated_cost": 74179,
+    "pricing_version": "quota_v3",
+    "inputs": {
+      "train_rows": 327052,
+      "raw_columns": 202,
+      "test_rows": 164647,
+      "model_version": "v3.5-fast",
+      "operation": "predict",
+      "n_estimators": 2,
+      "thinking_effort": null
+    }
+  },
+  "inferencia_tabpfn_remota_ejecutada": false,
+  "nota": "El runner no pudo ejecutar el alias py de WindowsApps; los venv se crearon con el ejecutable base de Python3.14.6, sin reutilizar paquetes del proyecto. Dataset externo provisto por la catedra, pasado por ruta absoluta.",
+  "inferencia_tabpfn_remota_omitida_por_usuario": true,
+  "decision_usuario": "Omitir ejecucion remota y terminar con validacion local verificada."
+}

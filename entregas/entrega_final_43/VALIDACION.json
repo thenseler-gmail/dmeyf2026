@@ -1,0 +1,37 @@
+{
+  "inferencia": {
+    "estado": "identico_byte_por_byte",
+    "contactos": 10404,
+    "sha256": "4dcf5eff118dafa41953f66999203db6818017975d52010bad33c4881985496e",
+    "modo": "modelos_y_dataset",
+    "matriz_agosto_sha256": "6d784e36bdbfd4d257453aee6f53bf4ae617fc3e07e4e27e2f119a63ed81ff33",
+    "error_maximo_por_modelo": {
+      "541440": 0.0,
+      "408476": 0.0,
+      "741961": 0.0,
+      "248865": 0.0,
+      "717444": 0.0
+    },
+    "api": false,
+    "creditos": 0
+  },
+  "reconstruccion_rapida": {
+    "estado": "identico_byte_por_byte",
+    "contactos": 10404,
+    "sha256": "4dcf5eff118dafa41953f66999203db6818017975d52010bad33c4881985496e",
+    "modo": "probabilidades_guardadas",
+    "matriz_agosto_sha256": null,
+    "error_maximo_por_modelo": {},
+    "api": false,
+    "creditos": 0
+  },
+  "preparacion_tabpfn": {
+    "estado": "payload_original_verificado",
+    "filas_train": 327052,
+    "filas_agosto": 164647,
+    "variables": 202,
+    "target": "BAJA+2",
+    "datos_clientes_enviados": false
+  },
+  "inferencia_tabpfn_remota_ejecutada": false
+}

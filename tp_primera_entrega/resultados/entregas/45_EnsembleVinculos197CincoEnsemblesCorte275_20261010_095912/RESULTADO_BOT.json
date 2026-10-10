@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 45,
+  "public_gain_mean": 96.8385,
+  "public_gain_std_dev": 2.0376,
+  "media_publica_pesos": 96838500,
+  "desvio_publico_pesos": 2037600,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas inmediatamente despues de preparar45; atribuido a45 por contexto",
+  "delta_vs_entrega43_pesos": -3976500,
+  "delta_vs_entrega44_pesos": 2343000,
+  "delta_vs_entrega36_pesos": -1336500,
+  "delta_desvio_vs44_pesos": -826600,
+  "faltante_objetivo_100millones": 3161500,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Media/desvio de cinco ensembles. Incluye la lista43 previamente seleccionada y cuatro nuevas replicas, con distintos grupos de semillas pero datos y TabPFN compartidos. No es intervalo de confianza."
+}

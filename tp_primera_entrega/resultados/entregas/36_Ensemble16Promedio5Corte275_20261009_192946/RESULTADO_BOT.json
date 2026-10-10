@@ -1,0 +1,15 @@
+{
+  "fecha": "2026-10-09",
+  "entrega": 36,
+  "public_gain_mean": 98.175,
+  "public_gain_std_dev": 0.0,
+  "media_publica_pesos": 98175000,
+  "desvio_publico_pesos": 0,
+  "archivos": 1,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas en el chat",
+  "delta_vs_entrega35_pesos": 1127500,
+  "delta_vs_entrega16_pesos": 1254000,
+  "faltante_objetivo_100millones": 1825000,
+  "nota": "Una sola lista; desv?o cero no mide estabilidad entre semillas."
+}

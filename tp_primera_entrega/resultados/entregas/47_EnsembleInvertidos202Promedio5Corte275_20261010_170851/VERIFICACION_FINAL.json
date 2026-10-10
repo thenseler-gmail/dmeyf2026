@@ -1,0 +1,20 @@
+{
+  "estado": "verificado",
+  "clientes": 10609,
+  "score_reconstruido_desde_componentes": true,
+  "seleccion_independiente_identica": true,
+  "csv_reproducido_hash_identico": true,
+  "csv_sha256": "0ecdc8ccb1ad21c01ccb4450783a3d1e74959564caf7b52ad091b94314edeebe",
+  "predicciones_sha256": "06dc191233258e0b4cbd48d82aad299ade90be1ddffa2871d36b9af5eeaed819",
+  "autorizacion_api_sha256": "29e11224127a7f76cb85c4fa67b45114b3492f905cfb3c52f2a8fbdb84ff7afb",
+  "api_estado_sha256": "119d8b9e245e4c61aabd67c3037c220966774a264fb449978780f9fcbb2ab2f5",
+  "creditos_consumidos": 74179,
+  "limite_autorizado": 80000,
+  "cambios_vs43": {
+    "agregados": 1109,
+    "retirados": 904,
+    "comunes": 9500
+  },
+  "api_adicional": false,
+  "fits_adicionales": 0
+}

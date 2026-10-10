@@ -1,0 +1,41 @@
+{
+  "entrega": 43,
+  "archivo_original": "EnsembleVinculos197Promedio5Corte275_20261010_094750.csv",
+  "fuente_tabpfn": "Entrega 8: EnsembleAbrilMayo5_20261005_220000, reutilizada en entrega 16 y 43",
+  "tabpfn": "Probabilidades archivadas del servicio Prior Labs para 202 variables, entrenamiento abril+mayo y target BAJA+2. La corrida original usaba un servicio remoto; se congela su salida para reproduccion exacta sin credenciales.",
+  "predicciones_originales_sha256": "3efd9d9e1ab27e34ca5aad52c86124ea539148ddffb71f1a64ee3fc912efa074",
+  "modelos_sha256": {
+    "seed248865.txt": "5bf05be0c09e49e2bffee9c70cbd4abef8cc4e5a0ad6bd4f656d26378d2a33a5",
+    "seed408476.txt": "fd510ebab63108d7d2ace3af455b2fffac054c00b3bf13cef632083eb639604e",
+    "seed541440.txt": "4025ca2ca208d70ded3ca1e40f2e76540d831fad922e28982a11b1170973b31a",
+    "seed717444.txt": "87a627bbe4aa12717e9ae2d771912ba7c7035dae0b65f780f4273d4386178b1c",
+    "seed741961.txt": "5af405ec9f674485c9599b7a7e633ed822dc5d1179507a74d727c9ca51031092"
+  },
+  "codigo_historico_sha256": {
+    "features.py": "632ede2156787069296d388ebe6178851bd41f12eb6388707bc7eabd4ad02663",
+    "features_vinculos.py": "9fd182078602dc0457448c05222dc974442a0e6115358df42ea05ea52c8abeb4"
+  },
+  "resultado_publico": {
+    "fecha": "2026-10-10",
+    "entrega": 43,
+    "public_gain_mean": 100.815,
+    "public_gain_std_dev": 0.0,
+    "media_publica_pesos": 100815000,
+    "desvio_publico_pesos": 0,
+    "archivos": 1,
+    "submission_id": null,
+    "fuente": "Resultado informado explicitamente por Tomas en el chat: 43 -> mean100.8150/std0.0000",
+    "delta_vs_entrega36_pesos": 2640000,
+    "delta_vs_entrega41_pesos": 3740000,
+    "delta_vs_entrega42_pesos": 4400000,
+    "faltante_objetivo_100millones": 0,
+    "excedente_objetivo_100millones": 815000,
+    "objetivo_publico_alcanzado": true,
+    "mejor_entrega": 43,
+    "mejor_ganancia_publica_pesos": 100815000,
+    "faltante_mejor_al_objetivo": 0,
+    "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+    "nota": "Una sola lista; desvio cero no mide estabilidad entre semillas ni en private."
+  },
+  "nota": "La 43 utiliza ocho vinculos recurrentes como variables de LightGBM. No utiliza clusters ni modelos por segmento. Seleccionada por su mayor ganancia publica observada; no constituye garantia de estabilidad o mejora privada."
+}
