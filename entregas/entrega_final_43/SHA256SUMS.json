@@ -1,8 +1,9 @@
 {
   ".gitattributes": "a0b8f6434b2c8136eb2ee3eed832f75940f5e2ad95c125cd55ab27af554a4ec8",
-  ".gitignore": "9cf3e6395c0b65397de4e2bf84fb602dc9a481aae35951ad2d85ea3e305d3c1e",
+  ".gitignore": "79dc7224bffb7ed8716ad8b2f757eda2e3a6318595659d3ff5ea149d3e62430b",
   "artefactos/predicciones_agosto.csv.gz": "735c498783a128cd57c9c06474129bd802166c26ba23f3c124ad71446189cc4a",
   "configuracion.json": "025457f3be664f3b75c3c99e28eb8cf2502050ece35e80427f056609c46d7138",
+  "configuracion_tabpfn.json": "b893f256828509b6225d05c87747d39f9b6ef02c87a8c668797439524d18abde",
   "features.py": "632ede2156787069296d388ebe6178851bd41f12eb6388707bc7eabd4ad02663",
   "features_vinculos.py": "9fd182078602dc0457448c05222dc974442a0e6115358df42ea05ea52c8abeb4",
   "modelos/seed248865.txt": "5bf05be0c09e49e2bffee9c70cbd4abef8cc4e5a0ad6bd4f656d26378d2a33a5",
@@ -12,8 +13,11 @@
   "modelos/seed741961.txt": "5af405ec9f674485c9599b7a7e633ed822dc5d1179507a74d727c9ca51031092",
   "prediccion_final.csv": "4dcf5eff118dafa41953f66999203db6818017975d52010bad33c4881985496e",
   "procedencia.json": "066de30a7defcb73ce537f6c89b019d9493b5b6d1bc6b9d66cb9c75bf07a4b27",
-  "README.md": "3c58f4c39e3b160a1b722ea02aeae2c103800354c2b7182a4a04a484556f2acd",
+  "README.md": "f9954ebbc9af3c33d9703424893bfe9153ea8219b9f0935e2efd64e781be29e6",
+  "recalcular_tabpfn.py": "c6400fc973424f16ac4d7d21bba913ac7d78127e2ed7e8e5876313475c9b76c0",
   "reproducir.py": "8ae5e382f5509e64528e6843c6d2ccc33112e0f6d8510f8ae647c6ebbad50a69",
+  "requirements-tabpfn.txt": "2d66c9f7930d005bc53739839a721370df43be006d8f52893d391f9674f6d4ca",
   "requirements.txt": "d300a1bdacc186fe70e9e807b1a496f34ab7c33c1fdee5b100a5d61348c3878d",
-  "VALIDACION.json": "ba730bf6a7eeb4cc36e901a04d79cca468d6a588d98a29a56b1f7af4c9623ead"
+  "TABPFN_CATEDRA.md": "aea6c32a2a468f6c2fdabe24a3cd4568de3b6ff2547ac5e135d4a4b462a88e5d",
+  "VALIDACION.json": "18685d5e07f696995bead90a779cce6b2343f6f7faddde5172dbe32b643c8326"
 }

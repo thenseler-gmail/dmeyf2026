@@ -24,5 +24,14 @@
     "error_maximo_por_modelo": {},
     "api": false,
     "creditos": 0
-  }
+  },
+  "preparacion_tabpfn": {
+    "estado": "payload_original_verificado",
+    "filas_train": 327052,
+    "filas_agosto": 164647,
+    "variables": 202,
+    "target": "BAJA+2",
+    "datos_clientes_enviados": false
+  },
+  "inferencia_tabpfn_remota_ejecutada": false
 }

@@ -95,8 +95,12 @@ faltantes, siguiendo el preprocesamiento original.
 La reproduccion exacta corresponde a **inferencia y seleccion con artefactos
 congelados**. TabPFN se ejecuto originalmente en el servicio remoto de Prior Labs;
 se incluye su salida para evitar depender de acceso, costo y cambios del servicio.
-Este paquete no reentrena TabPFN ni promete que una nueva llamada a ese servicio
-genere el mismo resultado. Los modelos LightGBM tambien se incluyen ya entrenados.
+La corrida principal usa esa salida archivada. Adicionalmente,
+`recalcular_tabpfn.py` permite ejecutar la configuracion original con una key propia
+de la catedra y verificar si reproduce exactamente la lista. Las instrucciones
+estan en [TABPFN_CATEDRA.md](TABPFN_CATEDRA.md). Hasta comparar una nueva respuesta
+del servicio no se promete igualdad exacta para ese modo. Los modelos LightGBM
+tambien se incluyen ya entrenados.
 
 Resultado publico informado para esta lista: mean 100.8150, std dev 0.0000
 ($100.815.000). Fue una unica lista; ese desvio no mide estabilidad entre semillas.

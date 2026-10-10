@@ -1,5 +1,8 @@
 !prediccion_final.csv
 !artefactos/predicciones_agosto.csv.gz
+!TABPFN_CATEDRA.md
 resultado_43/
+resultado_tabpfn/
 .venv/
+.venv-tabpfn/
 __pycache__/
