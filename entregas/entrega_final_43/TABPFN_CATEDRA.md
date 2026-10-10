@@ -10,6 +10,38 @@ Esta corrida requiere credito suficiente en esa cuenta. La ejecucion original
 estimaba 74.179 creditos; la cotizacion actual se consulta antes de ejecutar y
 puede cambiar. Crear una key no garantiza que la cuenta disponga de esa cuota.
 
+## Crear la cuenta y generar la key
+
+1. Abrir [Prior Labs Platform](https://platform.priorlabs.ai/) e iniciar sesion.
+   Si no tienen cuenta, elegir la opcion de registro y completar el flujo que
+   indique la plataforma, incluida la verificacion del correo si se solicita.
+2. Con la sesion iniciada, abrir directamente
+   [Account / API keys](https://platform.priorlabs.ai/account/api-keys).
+3. Elegir la opcion para crear una nueva API key. Si solicita un nombre,
+   usar uno descriptivo, por ejemplo `catedra-dmeyf-entrega43`, y confirmar
+   la creacion. Los nombres de los botones pueden variar segun la interfaz.
+4. Copiar el token completo que devuelve la plataforma. Si se muestra solo al
+   crearlo, conservarlo en un gestor de contrasenas. No pegarlo en GitHub,
+   notebooks, archivos de configuracion ni capturas compartidas.
+5. Revisar en la cuenta la cuota disponible. Para esta entrega, el presupuesto
+   de ejemplo es 80.000 creditos; primero consultar la cotizacion actual con el
+   comando de la seccion 2. Si la cuota no alcanza, gestionar el acceso o credito
+   necesario en Prior Labs antes de ejecutar la inferencia.
+6. Instalar el entorno de la seccion siguiente y cargar la key en
+   `TABPFN_TOKEN` mediante el comando de entrada oculta. El script leera esa
+   variable; no hay que editar ningun archivo para agregar la credencial.
+
+Para comprobar el acceso, despues de instalar el entorno y cargar la variable:
+
+```powershell
+.\.venv-tabpfn\Scripts\python.exe -c "from tabpfn_client import get_api_usage; print(get_api_usage())"
+```
+
+Este comando consulta la cuota y no envia matrices de clientes ni ejecuta
+inferencia. Si devuelve un error de autenticacion, comprobar que la key sea de
+esa cuenta, este activa y se haya copiado completa, sin espacios adicionales.
+Una key revocada se reemplaza generando otra en la misma pagina.
+
 ## Entorno original de TabPFN
 
 Usar un entorno separado del de inferencia LightGBM: los dos componentes se
