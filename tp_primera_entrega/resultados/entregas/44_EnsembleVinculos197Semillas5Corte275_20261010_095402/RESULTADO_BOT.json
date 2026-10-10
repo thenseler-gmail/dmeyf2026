@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 44,
+  "public_gain_mean": 94.4955,
+  "public_gain_std_dev": 2.8642,
+  "media_publica_pesos": 94495500,
+  "desvio_publico_pesos": 2864200,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Resultado de44 informado explicitamente por Tomas y repetido con los mismos valores en el chat",
+  "delta_vs_entrega43_pesos": -6319500,
+  "delta_vs_entrega36_pesos": -3679500,
+  "faltante_objetivo_100millones": 5504500,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Media/desvio entre cinco listas con un LightGBM197 y TabPFN cada una. 43 promedia cinco probabilidades LightGBM antes del corte;45 son cinco ensembles completos."
+}

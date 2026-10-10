@@ -1,0 +1,17 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 40,
+  "public_gain_mean": 97.185,
+  "public_gain_std_dev": 0.0,
+  "media_publica_pesos": 97185000,
+  "desvio_publico_pesos": 0,
+  "archivos": 1,
+  "submission_id": null,
+  "fuente": "Tomas informa explicitamente40 mean97.1850 std0.0000 tras indicar que la entrega",
+  "delta_vs_entrega36_pesos": -990000,
+  "delta_vs_entrega43_pesos": -3630000,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Una sola lista; desvio cero no mide estabilidad. Comparacion exploratoria de cuatro servicios; no mejora el control36."
+}

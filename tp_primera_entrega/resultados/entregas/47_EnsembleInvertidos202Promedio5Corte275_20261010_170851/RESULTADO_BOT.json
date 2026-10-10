@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 47,
+  "public_gain_mean": 99.11,
+  "public_gain_std_dev": 0.0,
+  "media_publica_pesos": 99110000,
+  "desvio_publico_pesos": 0,
+  "archivos": 1,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas inmediatamente despues de entrega47: mean99.1100/std0.0000; atribuido a47 por contexto.",
+  "delta_vs_entrega36_pesos": 935000,
+  "delta_vs_entrega43_pesos": -1705000,
+  "faltante_objetivo_100millones": 890000,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Una sola lista, desvio0 no mide estabilidad. Frente189 cambia targets y features; no aisla aporte de invertir targets ni demuestra superioridad privada."
+}

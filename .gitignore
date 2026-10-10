@@ -173,10 +173,13 @@ Session.vim
 *.pyc
 .venv/
 .venv-priorlabs/
+.venv-tabpfn/
+.codex-worktrees/
 *.dpapi
 .env
 .env.*
 !tp_primera_entrega/VARIABLES_HISTORICAS_TABPFN.md
+!tp_primera_entrega/*.md
 data/
 
 # Scala - sbt specific

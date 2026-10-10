@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 46,
+  "public_gain_mean": 96.69,
+  "public_gain_std_dev": 0.9437,
+  "media_publica_pesos": 96690000,
+  "desvio_publico_pesos": 943700,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas inmediatamente despues de preparar46; atribuido a46 por contexto",
+  "delta_vs_entrega45_pesos": -148500,
+  "delta_vs_entrega43_pesos": -4125000,
+  "faltante_objetivo_100millones": 3310000,
+  "mejor_entrega": 43,
+  "mejor_ganancia_publica_pesos": 100815000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Cinco controles189, mismos grupos que45. Agregados no permiten reconstruir diferencias individuales ni su desvio."
+}

@@ -1,0 +1,36 @@
+{
+  "estado": "verificado",
+  "checks": [
+    "cincoCSV",
+    "IDs ?nicos",
+    "mezcla desde dos fuentes",
+    "ranking con lexsort independiente",
+    "umbral estricto",
+    "hashes adjuntos",
+    "l?mite cr?ditos"
+  ],
+  "contactos": [
+    {
+      "seed": 541440,
+      "contactos": 10980
+    },
+    {
+      "seed": 408476,
+      "contactos": 11192
+    },
+    {
+      "seed": 741961,
+      "contactos": 11094
+    },
+    {
+      "seed": 248865,
+      "contactos": 11169
+    },
+    {
+      "seed": 717444,
+      "contactos": 11093
+    }
+  ],
+  "api_creditos": 78242,
+  "enviado_bot": false
+}

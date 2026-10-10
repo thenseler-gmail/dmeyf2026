@@ -1,0 +1,12 @@
+{
+  "fecha": "2026-10-06",
+  "public_gain_mean": 94.7265,
+  "public_gain_std_dev": 2.6149,
+  "media_publica_pesos": 94726500,
+  "desvio_publico_pesos": 2614900,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Informado por Tomas explicitamente para entrega17",
+  "delta_vs_entrega16_pesos": -2194500,
+  "faltante_objetivo_100millones": 5273500
+}

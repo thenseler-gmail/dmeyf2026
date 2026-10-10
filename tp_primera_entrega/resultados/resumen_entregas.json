@@ -1,0 +1,415 @@
+[
+  {
+    "entrega": "15_EnsembleCatBoost5_20261006_085026",
+    "resultado": {
+      "fecha": "2026-10-06",
+      "public_gain_mean": 93.9895,
+      "public_gain_std_dev": 2.2615,
+      "media_publica_pesos": 93989500,
+      "desvio_publico_pesos": 2261500,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Informado por Tomas para entrega15",
+      "delta_vs_entrega8_pesos": -429000,
+      "faltante_objetivo_100millones": 6010500
+    }
+  },
+  {
+    "entrega": "16_EnsembleHist1895_20261006_143235",
+    "resultado": {
+      "fecha": "2026-10-06",
+      "public_gain_mean": 96.921,
+      "public_gain_std_dev": 1.7816,
+      "media_publica_pesos": 96921000,
+      "desvio_publico_pesos": 1781600,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Informado por Tomas para entrega16",
+      "delta_vs_entrega8_pesos": 2502500,
+      "delta_vs_entrega15_pesos": 2931500,
+      "faltante_objetivo_100millones": 3079000
+    }
+  },
+  {
+    "entrega": "17_EnsembleHist189CatBoost5_20261006_145854",
+    "resultado": {
+      "fecha": "2026-10-06",
+      "public_gain_mean": 94.7265,
+      "public_gain_std_dev": 2.6149,
+      "media_publica_pesos": 94726500,
+      "desvio_publico_pesos": 2614900,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Informado por Tomas explicitamente para entrega17",
+      "delta_vs_entrega16_pesos": -2194500,
+      "faltante_objetivo_100millones": 5273500
+    }
+  },
+  {
+    "entrega": "19_EnsembleHist189CatBoostCorte31_20261006_153041",
+    "resultado": {
+      "fecha": "2026-10-06",
+      "entrega": 19,
+      "public_gain_mean": 93.6595,
+      "public_gain_std_dev": 1.8989,
+      "media_publica_pesos": 93659500,
+      "desvio_publico_pesos": 1898900,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Informado por Tomas como esta, interpretado como entrega19 por contexto inmediato; numero no explicito.",
+      "delta_vs_entrega16_pesos": -3261500,
+      "faltante_objetivo_100millones": 6340500,
+      "escala": "Ganancia publica ya correspondiente al25%; no dividir nuevamente."
+    }
+  },
+  {
+    "entrega": "21_EnsembleLGB189Tab2265_20261007_205130",
+    "resultado": {
+      "fecha": "2026-10-08",
+      "entrega": 21,
+      "public_gain_mean": 92.6475,
+      "public_gain_std_dev": 1.5995,
+      "media_publica_pesos": 92647500,
+      "desvio_publico_pesos": 1599500,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Informado por Tomas tras indicar envio de entrega21",
+      "delta_vs_entrega16_pesos": -4273500,
+      "faltante_objetivo_100millones": 7352500
+    }
+  },
+  {
+    "entrega": "32_EnsembleControl213Tab165_20261009_191748",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 32,
+      "public_gain_mean": 94.864,
+      "public_gain_std_dev": 3.4728,
+      "media_publica_pesos": 94864000,
+      "desvio_publico_pesos": 3472800,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega16_pesos": -2057000,
+      "faltante_objetivo_100millones": 5136000
+    }
+  },
+  {
+    "entrega": "33_Ensemble16Promedio5Corte25_20261009_192311",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 33,
+      "public_gain_mean": 96.1125,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 96112500,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega16_pesos": -808500,
+      "faltante_objetivo_100millones": 3887500,
+      "nota": "Una sola lista: el desv?o cero no mide estabilidad entre semillas. La referencia16 es la media de cinco listas."
+    }
+  },
+  {
+    "entrega": "34_Ensemble16SemillasCorte30_20261009_192311",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 34,
+      "public_gain_mean": 94.5725,
+      "public_gain_std_dev": 1.7819,
+      "media_publica_pesos": 94572500,
+      "desvio_publico_pesos": 1781900,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega16_pesos": -2348500,
+      "faltante_objetivo_100millones": 5427500
+    }
+  },
+  {
+    "entrega": "35_Ensemble16Promedio5Corte30_20261009_192311",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 35,
+      "public_gain_mean": 97.0475,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 97047500,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega16_pesos": 126500,
+      "delta_vs_entrega33_pesos": 935000,
+      "faltante_objetivo_100millones": 2952500,
+      "nota": "Una lista de probabilidades promediadas; desv?o cero no mide estabilidad. Referencia16: media de cinco listas; no se conocen aqu? sus resultados individuales."
+    }
+  },
+  {
+    "entrega": "36_Ensemble16Promedio5Corte275_20261009_192946",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 36,
+      "public_gain_mean": 98.175,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 98175000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega35_pesos": 1127500,
+      "delta_vs_entrega16_pesos": 1254000,
+      "faltante_objetivo_100millones": 1825000,
+      "nota": "Una sola lista; desv?o cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "37_Ensemble16Promedio5Corte325_20261009_192946",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 37,
+      "public_gain_mean": 94.1875,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 94187500,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega36_pesos": -3987500,
+      "delta_vs_entrega35_pesos": -2860000,
+      "delta_vs_entrega16_pesos": -2733500,
+      "faltante_objetivo_100millones": 5812500,
+      "nota": "Una sola lista; desv?o cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "38_Ensemble16Promedio5L40T60Corte275_20261009_193816",
+    "resultado": {
+      "fecha": "2026-10-09",
+      "entrega": 38,
+      "public_gain_mean": 95.04,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 95040000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega36_pesos": -3135000,
+      "faltante_objetivo_100millones": 4960000,
+      "nota": "Una sola lista; desv?o cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "39_Ensemble16Promedio5L60T40Corte275_20261009_193816",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 39,
+      "public_gain_mean": 96.525,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 96525000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas en el chat",
+      "delta_vs_entrega36_pesos": -1650000,
+      "faltante_objetivo_100millones": 3475000,
+      "nota": "Una sola lista; desv?o cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "40_EnsembleServicios193Promedio5Corte275_20261010_093934",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 40,
+      "public_gain_mean": 97.185,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 97185000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Tomas informa explicitamente40 mean97.1850 std0.0000 tras indicar que la entrega",
+      "delta_vs_entrega36_pesos": -990000,
+      "delta_vs_entrega43_pesos": -3630000,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Una sola lista; desvio cero no mide estabilidad. Comparacion exploratoria de cuatro servicios; no mejora el control36."
+    }
+  },
+  {
+    "entrega": "41_EnsembleGeneralEspecialistasPromedio5Corte275_20261010_094654",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 41,
+      "public_gain_mean": 97.075,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 97075000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado explicitamente por Tomas en el chat: 41 -> mean97.0750/std0.0000",
+      "delta_vs_entrega36_pesos": -1100000,
+      "faltante_objetivo_100millones": 2925000,
+      "mejor_entrega": 36,
+      "mejor_ganancia_publica_pesos": 98175000,
+      "faltante_mejor_al_objetivo": 1825000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Una sola lista; desvio cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "42_EnsembleModeloPorSegmentoPromedio5Corte275_20261010_094659",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 42,
+      "public_gain_mean": 96.415,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 96415000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado explicitamente por Tomas en el chat: 42 -> mean96.4150/std0.0000",
+      "delta_vs_entrega36_pesos": -1760000,
+      "delta_vs_entrega41_pesos": -660000,
+      "faltante_objetivo_100millones": 3585000,
+      "mejor_entrega": 36,
+      "mejor_ganancia_publica_pesos": 98175000,
+      "faltante_mejor_al_objetivo": 1825000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Una sola lista; desvio cero no mide estabilidad entre semillas."
+    }
+  },
+  {
+    "entrega": "43_EnsembleVinculos197Promedio5Corte275_20261010_094750",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 43,
+      "public_gain_mean": 100.815,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 100815000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado explicitamente por Tomas en el chat: 43 -> mean100.8150/std0.0000",
+      "delta_vs_entrega36_pesos": 2640000,
+      "delta_vs_entrega41_pesos": 3740000,
+      "delta_vs_entrega42_pesos": 4400000,
+      "faltante_objetivo_100millones": 0,
+      "excedente_objetivo_100millones": 815000,
+      "objetivo_publico_alcanzado": true,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "faltante_mejor_al_objetivo": 0,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Una sola lista; desvio cero no mide estabilidad entre semillas ni en private."
+    }
+  },
+  {
+    "entrega": "44_EnsembleVinculos197Semillas5Corte275_20261010_095402",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 44,
+      "public_gain_mean": 94.4955,
+      "public_gain_std_dev": 2.8642,
+      "media_publica_pesos": 94495500,
+      "desvio_publico_pesos": 2864200,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Resultado de44 informado explicitamente por Tomas y repetido con los mismos valores en el chat",
+      "delta_vs_entrega43_pesos": -6319500,
+      "delta_vs_entrega36_pesos": -3679500,
+      "faltante_objetivo_100millones": 5504500,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Media/desvio entre cinco listas con un LightGBM197 y TabPFN cada una. 43 promedia cinco probabilidades LightGBM antes del corte;45 son cinco ensembles completos."
+    }
+  },
+  {
+    "entrega": "45_EnsembleVinculos197CincoEnsemblesCorte275_20261010_095912",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 45,
+      "public_gain_mean": 96.8385,
+      "public_gain_std_dev": 2.0376,
+      "media_publica_pesos": 96838500,
+      "desvio_publico_pesos": 2037600,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas inmediatamente despues de preparar45; atribuido a45 por contexto",
+      "delta_vs_entrega43_pesos": -3976500,
+      "delta_vs_entrega44_pesos": 2343000,
+      "delta_vs_entrega36_pesos": -1336500,
+      "delta_desvio_vs44_pesos": -826600,
+      "faltante_objetivo_100millones": 3161500,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Media/desvio de cinco ensembles. Incluye la lista43 previamente seleccionada y cuatro nuevas replicas, con distintos grupos de semillas pero datos y TabPFN compartidos. No es intervalo de confianza."
+    }
+  },
+  {
+    "entrega": "46_ControlHist189CincoEnsemblesPareados45_20261010_100721",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 46,
+      "public_gain_mean": 96.69,
+      "public_gain_std_dev": 0.9437,
+      "media_publica_pesos": 96690000,
+      "desvio_publico_pesos": 943700,
+      "archivos": 5,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas inmediatamente despues de preparar46; atribuido a46 por contexto",
+      "delta_vs_entrega45_pesos": -148500,
+      "delta_vs_entrega43_pesos": -4125000,
+      "faltante_objetivo_100millones": 3310000,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Cinco controles189, mismos grupos que45. Agregados no permiten reconstruir diferencias individuales ni su desvio."
+    }
+  },
+  {
+    "entrega": "47_EnsembleInvertidos202Promedio5Corte275_20261010_170851",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 47,
+      "public_gain_mean": 99.11,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 99110000,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas inmediatamente despues de entrega47: mean99.1100/std0.0000; atribuido a47 por contexto.",
+      "delta_vs_entrega36_pesos": 935000,
+      "delta_vs_entrega43_pesos": -1705000,
+      "faltante_objetivo_100millones": 890000,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Una sola lista, desvio0 no mide estabilidad. Frente189 cambia targets y features; no aisla aporte de invertir targets ni demuestra superioridad privada."
+    }
+  },
+  {
+    "entrega": "48_EnsembleVinculos197TabPFN35Promedio5Corte275_20261010_172925",
+    "resultado": {
+      "fecha": "2026-10-10",
+      "entrega": 48,
+      "public_gain_mean": 98.8625,
+      "public_gain_std_dev": 0.0,
+      "media_publica_pesos": 98862500,
+      "desvio_publico_pesos": 0,
+      "archivos": 1,
+      "submission_id": null,
+      "fuente": "Resultado informado por Tomas inmediatamente despues de48: mean98.8625/std0.0000; atribuido a48 por contexto.",
+      "delta_vs_entrega43_pesos": -1952500,
+      "delta_vs_entrega47_pesos": -247500,
+      "delta_vs_entrega36_pesos": 687500,
+      "mejor_entrega": 43,
+      "mejor_ganancia_publica_pesos": 100815000,
+      "faltante_objetivo_100millones": 1137500,
+      "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+      "nota": "Cambio exclusivo v3.5-fast a v3.5, sin nueva validacion local. Pierde frente43 en este publico; no establece superioridad general de una version. Una lista, desvio0 no mide estabilidad."
+    }
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "entrega": 43,
+  "estado": "reenviada_como_final_confirmada_por_usuario_por_contexto",
+  "fecha": "2026-10-10",
+  "fuente": "Tomas responde listo despues de la indicacion de reenviar43 para dejarla como ultima entrega.",
+  "resultado_nuevo_del_reenvio": null,
+  "ganancia_publica_historica_pesos": 100815000,
+  "carpeta_github": "https://github.com/thenseler-gmail/dmeyf2026/tree/6ea5f3dc13b4e5f7e83953bbf478997a17cd8218/entregas/entrega_final_43",
+  "envio_automatico": false
+}

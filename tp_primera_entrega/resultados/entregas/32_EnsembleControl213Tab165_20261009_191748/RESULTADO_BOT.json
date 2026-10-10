@@ -1,0 +1,13 @@
+{
+  "fecha": "2026-10-09",
+  "entrega": 32,
+  "public_gain_mean": 94.864,
+  "public_gain_std_dev": 3.4728,
+  "media_publica_pesos": 94864000,
+  "desvio_publico_pesos": 3472800,
+  "archivos": 5,
+  "submission_id": null,
+  "fuente": "Resultado informado por Tomas en el chat",
+  "delta_vs_entrega16_pesos": -2057000,
+  "faltante_objetivo_100millones": 5136000
+}

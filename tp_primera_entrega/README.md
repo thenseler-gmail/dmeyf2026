@@ -1,6 +1,10 @@
 # TP - Primera entrega - BAJA+2
 
 Entrega indicada: domingo 11 de octubre de 2026.
+
+Actualización del 5 de octubre: TabPFN pausado por instrucción de Tomás. Objetivo confirmado: $100 millones en el público del Bot. Desarrollo activo LightGBM local con cuatro folds por cliente en abril/mayo y chequeo temporal marzo→mayo; junio queda como prueba de estrés estacional. No hay test independiente nuevo con las etiquetas disponibles. Ver `PROTOCOLO_GANANCIA.md`, `config_validacion_lightgbm.json` y `salidas/validacion_lgbm_20261005_190758/INFORME.md`. Los relatos siguientes conservan protocolos/resultados históricos.
+
+Reentrenamiento con las50históricas y la señal de interrupción de haberes: scripts33,34(verificación) y35(informe). Tres semillas para comparar202/203variables en las mismas particiones; candidato BAJA+2 con20semillas,trainmayo+junio y p>2,5%. Resultado `salidas/lgbm_haberes_particiones_20261005_191807/INFORME.md`; candidato pendiente `salidas/01_entregas_bot/5_LightGBMHaberesBaja2_20261005_192751/` con9.447 contactos,ganancia agosto desconocida. Parámetros congelados,sin API ni envío al Bot. `adjuntos_bot/` contiene el CSV promedio y `adjuntos_semillas/` los20CSV individuales; mensajes exactos en MENSAJE_ZULIP.txt y MENSAJE_SEMILLAS.txt.
 Fuente: `data/competencia_01.csv` (se conserva sin modificar).
 
 ## Archivos de trabajo
@@ -225,3 +229,41 @@ Se verificaron filas, etiquetas y métricas desde las predicciones. El consolida
 ```powershell
 .\.venv\Scripts\python.exe .\tp_primera_entrega\06_comparacion_optuna_features.py --intrames-existente .\tp_primera_entrega\salidas\optuna_20261002_123603_479131
 ```
+
+
+## LightGBM con historia ampliada, siguiendo z601
+
+`14_lightgbm_catedra_historicas.py` ejecuta localmente dos estudios (BAJA+2 frente al resto, y BAJA+1/BAJA+2 frente a CONTINUA), usando 152 originales y 50 historicas. No requiere credenciales ni envia datos a servicios externos.
+
+Desde la raiz del repositorio, con el CSV en `data/competencia_01.csv`:
+
+```powershell
+.\.venv\Scripts\python.exe tp_primera_entrega/14_lightgbm_catedra_historicas.py --trials 10
+```
+
+Abril: 5 particiones estratificadas 70/30 con el espacio de hiperparametros de z601, maximo 1000 rounds. Bagging efectivo (`bagging_freq=1`). Se usa early stopping por fold midiendo siempre ganancia de BAJA+2 real, incluso para el target combinado; se conserva la mediana de best_iter. Este detalle difiere del CV agregado de z601. Las ganancias internas divididas por 0,3 no son ganancias publicas ni validacion temporal.
+
+Mayo: los cinco mejores trials de cada target se eval?an con tres semillas comunes, entrenando abril. Se seleccionan target, parametros y cantidad de contactos (8000..15000, pasos de 500) por ganancia media. Esta es seleccion sobre mayo reutilizado, no una estimacion independiente. Junio: comprobacion exploratoria con tres semillas, train abril/mayo; no cambia lo elegido.
+
+Agosto: se reentrena mayo/junio con 20 semillas, sin cambiar el resto de parametros ni numero de rounds; cada archivo usa la misma cantidad de contactos. Historia solo de meses anteriores, sin etiquetas auxiliares. No se incluye ID, foto_mes ni target entre predictores. El cambio temporal de train y la cobertura historica distinta son limitaciones. Este experimento no incluye control sin historia y no permite atribuir una mejora exclusivamente a esas columnas.
+
+Salidas: estudio SQLite, tablas de trials, candidatos, seleccion de mayo, diagnostico de junio, configuracion elegida, versiones/hashes, 20 modelos de texto y probabilidades de agosto. `adjuntos_zulip/` contiene exclusivamente los 20 CSV sin encabezado ni indice y con IDs enteros; `MENSAJE_ZULIP.txt` contiene el cuerpo para enviar manualmente. No adjuntar `predicciones_agosto.csv` al bot.
+
+Para ampliar la busqueda o reanudar, conservar la carpeta y usar:
+
+```powershell
+.\.venv\Scripts\python.exe tp_primera_entrega/14_lightgbm_catedra_historicas.py --trials 30 --salida tp_primera_entrega/salidas/CARPETA_EXISTENTE
+```
+
+Al ampliar trials se vuelve a seleccionar y regenerar los modelos/archivos. La reanudacion comprueba versiones y codigo; no equivale a recomenzar la secuencia del sampler desde cero. Para reproducir el submit elegido, usar parametros, rounds y semillas del manifiesto con las versiones registradas. No ejecutar dos procesos contra la misma carpeta.
+
+
+La primera corrida completa es `salidas/lgbm_catedra_hist_20261004_225654/`. La configuracion congelada para reproducir sus 20 CSV esta en `config_submit_lightgbm_historicas.json`; las versiones exactas estan en `requirements-lightgbm-submit.txt`. No hace falta ejecutar Optuna para reproducir esta prueba:
+
+```powershell
+python -m venv .venv-entrega
+.\.venv-entrega\Scripts\python.exe -m pip install -r tp_primera_entrega/requirements-lightgbm-submit.txt
+.\.venv-entrega\Scripts\python.exe tp_primera_entrega/15_reproducir_submit_lightgbm.py --manifest tp_primera_entrega/config_submit_lightgbm_historicas.json --salida tp_primera_entrega/salidas/reproduccion_nueva
+```
+
+Se utilizo Python 3.14 en Windows. La salida debe ser una carpeta nueva. El script compara SHA-256 de cada archivo con la corrida original y falla ante discrepancias. Para la prueba del bot, enviar los 20 CSV de `adjuntos_zulip/` juntos, con cuerpo `submit LGBMHist20261004225654`. Es una prueba de varias semillas: la entrega definitiva exige reenviar un solo archivo elegido para que sea el ultimo antes del cierre.

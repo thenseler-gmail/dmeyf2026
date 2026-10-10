@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-10-10",
+  "entrega": 41,
+  "public_gain_mean": 97.075,
+  "public_gain_std_dev": 0.0,
+  "media_publica_pesos": 97075000,
+  "desvio_publico_pesos": 0,
+  "archivos": 1,
+  "submission_id": null,
+  "fuente": "Resultado informado explicitamente por Tomas en el chat: 41 -> mean97.0750/std0.0000",
+  "delta_vs_entrega36_pesos": -1100000,
+  "faltante_objetivo_100millones": 2925000,
+  "mejor_entrega": 36,
+  "mejor_ganancia_publica_pesos": 98175000,
+  "faltante_mejor_al_objetivo": 1825000,
+  "escala": "Public gain ya corresponde al25%; no dividir nuevamente.",
+  "nota": "Una sola lista; desvio cero no mide estabilidad entre semillas."
+}
